@@ -15,3 +15,24 @@ lst = [38, 15, 64, 30, 55, 30, 103]
 print(sorted(lst, key=sort))
 
 
+# Noric Grel aranc buildin methodneri
+
+def num_sort(nums):
+    unordered = nums.copy()
+    ordered = []
+    while unordered:
+        smallest = unordered[0]
+        s = sum(int(c) for c in str(smallest) if c != "-")
+        for t in unordered:
+            t_s = sum(int(c) for c in str(t) if c != "-")
+            if t_s < s:
+                smallest = t
+                s = t_s
+        ordered.append(smallest)
+        unordered.remove(smallest)
+    return ordered
+
+
+lst = [38, 15, 64, 30, 55, 30, 103]
+
+print(num_sort(lst))
